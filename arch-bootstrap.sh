@@ -76,6 +76,7 @@ configure_minimal_system() {
   test -e "$DEST/dev/null" || mknod "$DEST/dev/null" c 1 3
   test -e "$DEST/dev/random" || mknod -m 0644 "$DEST/dev/random" c 1 8
   test -e "$DEST/dev/urandom" || mknod -m 0644 "$DEST/dev/urandom" c 1 9
+  test -e "$DEST/dev/console" || mknod -m 0600 "$DEST/dev/console" c 5 1
   
   sed -i "s/^[[:space:]]*\(CheckSpace\)/# \1/" "$DEST/etc/pacman.conf"
   sed -i "s/^[[:space:]]*SigLevel[[:space:]]*=.*$/SigLevel = Never/" "$DEST/etc/pacman.conf"
